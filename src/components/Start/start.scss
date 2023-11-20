@@ -1,0 +1,102 @@
+@import '../../App.scss';
+
+$image-max-opacity: 50%;
+$image-min-opacity: 15%;
+
+.start{
+    display: flex;
+    margin: 10px;
+
+    .dot-panel{
+        text-align: center;
+        flex-basis: 50dvw;
+        flex-wrap: wrap;
+
+        border-radius: 30%;
+        box-shadow: 1px 1px 0px 1px indianred;
+
+        @keyframes imageAnimation {
+            from{
+                opacity: $image-min-opacity;
+            }
+            to{
+                opacity: $image-max-opacity;
+            }
+        }
+
+        .image{
+            margin: 0;
+            box-shadow: none;
+            overflow: hidden;
+            user-select: none;
+            animation: imageAnimation 1s ease-in-out 0s infinite alternate backwards;
+            opacity: 0%;
+        }
+        @media (max-width: $screen-width-adapt) {
+            display: none;
+        }
+    }
+
+    .right-panel{
+        font-family: $font-2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .name{
+            text-align: center;
+            font-size: 48px;
+
+        }
+        .intro{
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .skill-panel{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+    
+            .title{
+                text-align: center;
+            }
+            .skill-list{
+                display: flex;
+                flex-direction: row;
+                
+                
+                .skill{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    padding: 0;
+                    margin: 0;
+                    .icon{
+                        color: aqua;
+                    }
+
+                    .skill-name{
+                    }
+
+                    &:hover{
+                        transform: scale(1.2);
+                    }
+                }
+            }
+        }
+        .info-buttons{
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+            button{
+                font-family: inherit;
+            }
+        }
+    }
+
+}

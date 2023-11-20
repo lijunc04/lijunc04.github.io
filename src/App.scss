@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Permanent+Marker&display=swap');
+
+
+//colors
+$theme: dark;
+$main-background-color: #192739;
+$main-text-color: #ffffff;
+$secondary-background-color: #3055D3;
+$secondary-text-color:#65E6A8;
+
+//transition
+$hover-transition-duration: 0.3s;
+
+//viewport
+$screen-width-adapt: 600px;
+
+//Fonts
+$big-font-name: 'Libre Baskerville', serif;
+$font-2: 'Permanent Marker', cursive;
+
+
+:root{
+    background-color: $main-background-color;
+    color: $main-text-color;
+}
+
+button{
+    background-color: $main-background-color;
+    border-style: none;
+    color: $main-text-color;
+    cursor: pointer;
+    &:hover{
+        transition: $hover-transition-duration ease;
+        box-shadow: 0 0.1rem 0 0 $secondary-text-color;
+        scale: 1.2;
+    }
+}
+
+a{
+    color: $main-text-color;
+    text-decoration: none;
+    padding: 0.1rem;
+    &:hover{
+        transition: $hover-transition-duration ease;
+        box-shadow: 0 0.1rem 0 0 $secondary-text-color;
+    }
+}
+
+p{
+    margin: 0 auto;
+    color: $main-text-color;
+    padding: 0.1rem;
+}
