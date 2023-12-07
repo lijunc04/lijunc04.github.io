@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.scss'
 import Nav from './components/Nav/nav'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './containers/Home/home'
 import NotFound from './containers/NotFound/notfound'
 
