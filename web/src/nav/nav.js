@@ -1,50 +1,57 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+import NightMode from './nightMode';
 
-const NavContainer = styled.div`
-    height: 9vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #3d423e;
-    padding: 10px 20px;
-    @media (max-width: 768px) {
-        display: none;  
-    }
-`;
 
-const NavItem = styled.div`
-    color: white;
-    margin: 0 10px;
-    position: relative;
-    cursor: pointer;
-    font-size: 22px;
+export default function Nav({ onNavSelect, experiencesRef, projectsRef, contactsRef, toggleTheme, isDark }){
+    const NavContainer = styled.div`
+        position: relative;
+        margin: 5px;
+        height: 3vh;
+        display: flex;
+        background-color: ${isDark ? '#1a1b1e' :'#FFF'};
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        @media (max-width: 768px) {
+            display: none;  
+        }
+    `;
 
-    &::after {
-        content: '';
-        position: absolute;
-        width: 0%;
-        height: 2px;
-        bottom: -5px;
-        left: 50%;
-        background-color: white;
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-    }
+    const NavItem = styled.div`
+        color: ${isDark ? '#e3e3e3' : '#000'};
+        margin: 0 10px;
+        position: relative;
+        cursor: pointer;
+        font-size: 22px;
 
-    &:hover::after {
-        width: 100%;
-    }
-`;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: ${isDark ? '#e3e3e3' : '#000'};
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
 
-const NavItems = styled.div` 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items:center;
-    gap: 30%;
-`;
+        &:hover::after {
+            width: 100%;
+        }
+    `;
 
-export default function Nav({ onNavSelect, experiencesRef, projectsRef, contactsRef }){
+    const NavItems = styled.div` 
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items:center;
+        gap: 30%;
+    `;
+
+
+
     return (
         <NavContainer>
             <NavItems>
@@ -52,6 +59,7 @@ export default function Nav({ onNavSelect, experiencesRef, projectsRef, contacts
                 <NavItem onClick={() => onNavSelect(projectsRef)}>Projects</NavItem>
                 <NavItem onClick={() => onNavSelect(contactsRef)}>Contacts</NavItem>
             </NavItems>
+            <NightMode toggleTheme={toggleTheme} isDark={isDark} />
         </NavContainer>
     )
 }

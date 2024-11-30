@@ -1,14 +1,7 @@
 {
   "short_name": "Lijun's Website",
   "name": "Lijun's Website",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
-  "start_url": "lijuncai.tech",
+  "start_url": "lijunc04.github.io",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#F8F8D3"

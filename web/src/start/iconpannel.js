@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
+import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Message from "../trivials/message";
 import { useState } from 'react';
 
+const email1 = 'lijun'
 
-// Icons container
 const IconsContainer = styled.div`
   display: flex;
   justify-content: space-around; // This will distribute space equally between icons
@@ -14,7 +14,6 @@ const IconsContainer = styled.div`
   width: 50%;
 `;
 
-// Individual Icon styled component
 const Icon = styled.a`
   width: 50px; // Adjust size as necessary
   height: 50px;
@@ -29,7 +28,9 @@ const Icon = styled.a`
     cursor: pointer;
   }
 `;
-function IconsPanel() {
+
+const email2 = 'cai@umass.edu'
+function IconsPanel({ toggleTheme, isDark }) {
     const [showMessage, setShowMessage] = useState(false);
     return (
         <IconsContainer>
@@ -40,7 +41,7 @@ function IconsPanel() {
             >
                 <FaGithubSquare 
                     size={'70%'} 
-                    color='#000000'
+                    color={isDark ? '#FFF' : '#000'}
                 />
             </Icon> 
             <Icon 
@@ -50,22 +51,12 @@ function IconsPanel() {
             >
                 <FaLinkedin 
                     size={'70%'} 
-                    color='#000000'
-                />
-            </Icon> 
-            <Icon 
-                href="https://instagram.com/lijun_cai_"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <FaInstagramSquare 
-                    size={'70%'} 
-                    color='#000000'
+                    color={isDark ? '#FFF' : '#000'}
                 />
             </Icon> 
             <Icon 
                 onClick={() => {
-                    navigator.clipboard.writeText('lijuncai@umass.edu')
+                    navigator.clipboard.writeText(email1 + email2)
                     setShowMessage(true)
                     setTimeout(() => {
                         setShowMessage(false);
@@ -74,7 +65,7 @@ function IconsPanel() {
             >
                 <MdEmail 
                     size={'70%'} 
-                    color='#000000'
+                    color={isDark ? '#FFF' : '#000'}
                 />
             </Icon>
             <Message message='Email Address Copied!' show={showMessage}/>

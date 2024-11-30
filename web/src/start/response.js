@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import styled from 'styled-components';
+
 
 const StyledText = styled.span`
     font-size: 24px;
@@ -8,6 +9,7 @@ const StyledText = styled.span`
     white-space: nowrap;
     overflow: hidden;
     width: 0;
+    color: ${props => props.isDark ? '#FFF' : '#000'};
     animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
     user-select: none;
     @keyframes typing {
@@ -17,19 +19,17 @@ const StyledText = styled.span`
 
     @keyframes blink-caret {
         from, to { border-color: transparent }
-        60% { border-color: black }
+        60% { border-color: ${props => props.isDark ? 'white' : 'black'} }
     }
 `;
 
-function Response(props) {
-    const words = props.words;
+const Response = memo(function Response({ words, startTime, isDark }) {
     const [index, setIndex] = useState(0);
     const [subIndex, setSubIndex] = useState(0);
     const [reverse, setReverse] = useState(false);
     const [started, setStarted] = useState(false);
 
-
-    useEffect(() => {
+    const updateIndexes = useCallback(() => {
         if (subIndex === words[index].length + 1 && !reverse) {
             setReverse(true);
             return;
@@ -37,33 +37,40 @@ function Response(props) {
 
         if (subIndex === 0 && reverse) {
             setReverse(false);
-            setIndex((prevIndex) => (prevIndex + 1) % words.length);
+            setIndex((prev) => (prev + 1) % words.length);
             return;
         }
-    
-        const starttimeout = setTimeout(() => {
-            if(started === false){
-                setStarted(true)
-            }
-        }, props.startTime)
 
-        const carettimeout = setTimeout(() => {
-            if(started){
-                setSubIndex((prevSubIndex) => prevSubIndex + (reverse ? -1 : 1));
-            }
-        }, reverse ? Math.max(75, parseInt(Math.random()*100)) : subIndex === words[index].length ? 1700 : Math.max(150, parseInt(Math.random() * 200)));
+        const timeout = setTimeout(() => {
+            setSubIndex((prev) => prev + (reverse ? -1 : 1));
+        }, reverse 
+            ? Math.max(75, Math.random() * 100) 
+            : subIndex === words[index].length 
+                ? 1700 
+                : Math.max(150, Math.random() * 200)
+        );
 
-        return () => {
-            clearTimeout(carettimeout); 
-            clearTimeout(starttimeout);
-        };
-    }, [subIndex, index, reverse, words, started, props.startTime]);
+        return () => clearTimeout(timeout);
+    }, [subIndex, reverse, index, words]);
 
+    useEffect(() => {
+        const startTimeout = setTimeout(() => {
+            setStarted(true);
+        }, startTime);
 
+        return () => clearTimeout(startTimeout);
+    }, [startTime]);
+
+    useEffect(() => {
+        if (!started) return;
+        return updateIndexes();
+    }, [started, updateIndexes]);
 
     return (
-        <StyledText>{`${words[index].substring(0, subIndex)}${reverse ? " " : ""}`}</StyledText>
+        <StyledText isDark={isDark}>
+            {`${words[index].substring(0, subIndex)}${reverse ? " " : ""}`}
+        </StyledText>
     );
-}
+});
 
 export default Response;
