@@ -76,10 +76,7 @@ export default function ExperienceList({isDark}){
         color: ${props => props.isDark ? '#b1b1b1' : '#444'};
     `;
 
-    const ExperienceDescription = styled.p`
-        font-size: 12px;
-        color: ${props => props.isDark ? '#919191' : '#555'};
-    `;
+
 
     const ExperienceImage = styled.img`
         width: 70px;

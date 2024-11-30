@@ -3,7 +3,6 @@ import photo from '../assets/me_aged_9.jpg'
 import Response from "./response";
 import IconsPanel from "./iconpannel";
 import Resume from '../assets/resume.pdf'
-import NightMode from "../nav/nightMode";
 
 
 export default function Start({ toggleTheme, isDark }){
