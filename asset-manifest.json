@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/lijunc04.github.io/static/css/main.e6c13ad2.css",
+    "main.js": "/lijunc04.github.io/static/js/main.074116dc.js",
+    "static/js/453.d9ea6c44.chunk.js": "/lijunc04.github.io/static/js/453.d9ea6c44.chunk.js",
+    "static/media/experience_00.png": "/lijunc04.github.io/static/media/experience_00.e3890ece2752010714e0.png",
+    "static/media/resume.pdf": "/lijunc04.github.io/static/media/resume.ae840efa10892f2910eb.pdf",
+    "static/media/project_01.png": "/lijunc04.github.io/static/media/project_01.276917fcf24a245e7a79.png",
+    "static/media/project_02.png": "/lijunc04.github.io/static/media/project_02.b6fcf4c33f1f41ddd39f.png",
+    "static/media/project_00.png": "/lijunc04.github.io/static/media/project_00.8041ed5b5c9e04c5e482.png",
+    "static/media/me_aged_9.jpg": "/lijunc04.github.io/static/media/me_aged_9.737895bdbe8387503ea3.jpg",
+    "index.html": "/lijunc04.github.io/index.html",
+    "static/media/dark-mode-svgrepo-com.svg": "/lijunc04.github.io/static/media/dark-mode-svgrepo-com.b376fe95efd5bb18b34aca163798fca7.svg",
+    "main.e6c13ad2.css.map": "/lijunc04.github.io/static/css/main.e6c13ad2.css.map",
+    "main.074116dc.js.map": "/lijunc04.github.io/static/js/main.074116dc.js.map",
+    "453.d9ea6c44.chunk.js.map": "/lijunc04.github.io/static/js/453.d9ea6c44.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.074116dc.js"
+  ]
+}

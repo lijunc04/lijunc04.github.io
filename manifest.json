@@ -1,0 +1,8 @@
+{
+  "short_name": "Lijun's Website",
+  "name": "Lijun's Website",
+  "start_url": "lijunc04.github.io",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#F8F8D3"
+}
