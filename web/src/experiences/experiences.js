@@ -15,6 +15,7 @@ const Experiences = forwardRef((props, ref) => {
         padding-top: 20px;
         padding-bottom: 20px;
         font-size: 40px;
+        margin-top: 25px;
 
     `;
     return (

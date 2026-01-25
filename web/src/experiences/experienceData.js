@@ -1,45 +1,30 @@
-import image1 from '../assets/experience_00.png'
+
 import image2 from '../assets/experience_01.jpeg'
+import image3 from '../assets/experience_03.jpg'
+import image4 from '../assets/experience_04.png'
 
 export const ExperiencesData = [
     {
-        title: "Intern @ Huawei Tech Japan",
-        location: "Shinagawa, Tokyo",
-        position: "AI Camera Team",
-        period: "May 2024 - Aug 2024",
-        image: image1,
+        title: "Sphere Lab @ Chinese University of Hong Kong",
+        location: "Hong Kong",
+        position: "Visiting Student",
+        period: "Jan 2026 - Present",
+        image: image4,
+    },
+
+    {
+        title: "Koike Lab @ Institute of Science Tokyo",
+        location: "Meguro, Tokyo",
+        position: "Visiting Student",
+        period: "May 2025 - Sept 2025",
+        image: image3,
     },
 
     {
         title: "UMass' Chinese Student and Scholar Association (CSSA)",
         position: "Treasurer",
-        period: "Sept 2023 - Now",
-        short_description: "I will become CSSA's new treasurer, managing the finances of the association, also leading the finance department of the CSSA...",
-        full_description: "Joined",
+        period: "Sept 2023 - Present",
         image: image2,
     },
 
 ];
-
-/*
-  {
-        title: "UMass' Chinese Student and Scholar Association (CSSA)",
-        position: "Treasurer",
-        period: "Starting from Sept 2024",
-        short_description: "I will become CSSA's new treasurer, managing the finances of the association, also leading the finance department of the CSSA...",
-        full_description: "Joined",
-        image: image2,
-    },
-
-        {
-        title: "HackUMass XI Participant",
-        position: "Participant",
-        period: "Nov 2023",
-        award: "Wolfram Alpha Award (top 7 out of ~90), Best Sustainability Award",
-        short_description: "I worked at Huawei Japan as an artificial intelligence intern on their AI camera team, mainly learning and solving computer vision tasks",
-        full_description: "I worked at Huawei Japan as an artificial intelligence intern on their AI camera team for two months. As my first internship, this on-site opportunity gave me plentiful hands-on experience working with fantastic AI engineers at Huawei and solving many computer vision tasks together. One of the main tasks I worked on was using AI models to improve rain scene capturing, along with some other photographic methods. I was mainly responsible for coming up with potential AI solutions and training and testing models verifying those solutions.",
-        image: image3,
-    },  
-
-    
-*/

@@ -14,7 +14,7 @@ function App() {
   const experiencesRef = useRef(null);
   const projectsRef = useRef(null);
   const contactsRef = useRef(null);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const [currentSection, setCurrentSection] = useState('start');
 
   // Throttle the scroll handler
@@ -72,7 +72,6 @@ function App() {
     background-color: ${isDark ? '#1a1b1e' : '#FFFFFF'};
     color: ${isDark ? '#e3e3e3' : '#000'};
     width: 100vw;
-    user-select:none;
     @media (max-width: 768px) {
       height: 600vh;
     }

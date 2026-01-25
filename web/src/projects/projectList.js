@@ -38,7 +38,7 @@ const ProjectContainer = styled.div`
         left: 0;
         width: 4px;
         height: 100%;
-        background: ${props => props.isDark ? '#8687af' : '#64658b'};
+        background: ${props => props.isDark ? '#8687af' : '#000000'};
         transition: all 0.3s ease;
     }
 
@@ -55,7 +55,7 @@ const ProjectContainer = styled.div`
 
         &:before {
             width: 8px;
-            background: ${props => props.isDark ? '#a5a6d4' : '#8687af'};
+            background: ${props => props.isDark ? '#a5a6d4' : '#000000'};
         }
     }
 `;

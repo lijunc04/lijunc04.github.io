@@ -59,7 +59,7 @@ export default function Start({ toggleTheme, isDark }){
         flex-direction: column;
         justify-content: center;
         align-items: left;
-        padding: 6% 8% 6% 4%;
+        padding: 6% 10% 6% 4%;
         overflow: none;
 
         @media (max-width: 768px) {
@@ -110,8 +110,9 @@ export default function Start({ toggleTheme, isDark }){
     `;
 
     const Block = styled.div`
-        padding-bottom: 10%;
-        
+        padding-bottom: 5%;
+        font-weight: bold;
+
         @media (max-width: 768px) {
             padding-bottom: 20px;
         }
@@ -120,6 +121,11 @@ export default function Start({ toggleTheme, isDark }){
     const BigText = styled.div`
         font-size: 20px;
         color: ${isDark ? '#ffffff' : '#000000'};
+    `;
+
+    const InlineRow = styled.div`
+        display: flex;
+        flex-direction: column;
     `;
 
     const SkillTextContainer = styled.div`
@@ -132,30 +138,50 @@ export default function Start({ toggleTheme, isDark }){
 
     const SkillText = styled.div`
         background-color: ${isDark ? '#2d2f34' : '#000000'};
+        font-weight: normal;
         color: ${isDark ? '#e3e3e3' : '#FFFFFF'};
         border-radius: 20px;
         text-align: center;
         padding: 5px 10px;
-
+        user-select:none;
         &:hover {
             background-color: ${isDark ? '#404249' : '#A0A095'};
             color: ${isDark ? '#ffffff' : '#000000'};
-            cursor: pointer;
         }
     `;
+
+    const ResponseContainer = styled.div`
+        height: 20px;
+        width: 90%;
+        align-items:ceter;
+        text-align: center;
+        margin-top: 10px;
+    `
     const ResponseText = styled.div`
         line-height: 1.5;
         font-size: 16px;
+        font-weight: normal;
         color: ${props => props.isDark ? '#e3e3e3' : '#000000'};
-        opacity: 0.9;
-        padding: 15px 0;
-        
+        opacity: 0.95;
+        padding: 15px 0 0 10px;
+        cursor: pointer;
+
+        a {
+            color: ${props => props.isDark ? '#8ab4ff' : '#1a0dab'};
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             font-size: 15px;
             padding: 10px 0;
         }
     `;
-    const skillList = ['Python', 'PyTorch', 'OpenCV', 'Yolo', 'Java', 'C', 'React', 'Expo', 'MongoDB', 'Node.js', 'JavaScript', 'TypeScript', 'CSS', 'Git', 'Flask', 'Firebase', 'AWS Rekognition']
+    const skillList = ['Python', 'PyTorch', 'OpenCV', 'Yolo', 'Java', 'C', 'React', 'Expo', 'MongoDB', 'Node.js', 'JavaScript', 'TypeScript', 'CSS', 'Git', 'Flask', 'Firebase', 'AWS Rekognition', 'Mujoco', 'Gymnasium']
 
     return (
         <Container id="start">
@@ -166,7 +192,7 @@ export default function Start({ toggleTheme, isDark }){
                             src={photo} 
                             alt="Me aged 9 (maybe, I don't actually remember)"
                         />
-                        <IntroText>Hi, I'm <b>Lijun Cai</b><br/>CS Sophomore @ UMass Amherst.</IntroText>
+                        <IntroText>Hi, I'm <b>Lijun Cai</b><br/>CS @ UMass Amherst.</IntroText>
                         <ResumeButton onClick={()=>window.open(Resume,  '_blank')}>My Résumé</ResumeButton>
                         <IconsPanel                
                             toggleTheme={toggleTheme}
@@ -175,27 +201,27 @@ export default function Start({ toggleTheme, isDark }){
                 </LeftSection>
                 <RightSection>
                     <Block>
-                        <BigText>Where Am I?</BigText>
-                        <Response
-                            isDark={isDark}
-                            words={['Amherst, MA', 'Yokohama, Japan', 'Shenzhen, China']} 
-                            startTime={80}
-                        />
-                    </Block>
-                    <Block>
-                        <BigText>My Interests?</BigText>
+                        <BigText>About Me</BigText>
                         <ResponseText isDark={isDark}>
-                            I am interested in deep learning, specifically computer vision (looking for research opportunities!), but I am also a fan of hackathons, web development, and data analytics in soccer.
+                            I am a computer science undergraduate student at <a href="https://www.cics.umass.edu/" target="_blank" rel="noreferrer">CICS</a> of the University of Massachusetts Amherst, graduating in <b>May 2026</b>. I am also a visiting student at the <a href="https://spherelab.ai/"target="_blank" rel="noreferrer"> Sphere Lab</a> of Chinese University of Hong Kong advised by Assistant Prof. Weiyang Liu. Previously I was a visiting student at the <a href="https://www.vogue.cs.titech.ac.jp/" rel="noreferrer"
+                            target="_blank">Koike Lab</a> at the Institute of Science Tokyo advised by Assistant Prof. Yichen Peng. 
+                            <br />
+                            <br />
+                            I am intested in research focusing on <br/>1. Representation learning <br/>2. Principle algorithms for large deep learning model training & post-training.  
                         </ResponseText>
                     </Block>
                     <Block>
-                        <BigText>Hobbies?</BigText>
-                        <Response 
-                            toggleTheme={toggleTheme}
-                            isDark={isDark}
-                            words={['Soccer', 'Music Making', 'Coding', 'Football Manager', 'Traveling']} 
-                            startTime={380}
-                        />
+                        <InlineRow>
+                            <BigText>Hobbies?</BigText>
+                            <ResponseContainer>
+                                <Response 
+                                    toggleTheme={toggleTheme}
+                                    isDark={isDark}
+                                    words={['Soccer  ⚽️', 'Music Making  🎵', 'Football Manager  🕹️', 'Traveling  🌏', 'Skiing  ⛷️']} 
+                                    startTime={240}
+                                />
+                            </ResponseContainer>
+                        </InlineRow>
                     </Block>
                     <Block>
                         <BigText>Skills</BigText>

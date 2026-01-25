@@ -12,51 +12,51 @@ export default function ExperienceList({isDark}){
     `;
 
     const ExperienceContainer = styled.div`
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        margin-bottom: 20px;
-        background: ${props => props.isDark ? 
-            'rgba(30, 30, 30, 0.7)' : 
-            'rgba(255, 255, 255, 0.1)'
-        };
-        backdrop-filter: blur(10px);
-        border: 1px solid ${props => props.isDark ? 
-            'rgba(255, 255, 255, 0.1)' : 
-            'rgba(0, 0, 0, 0.2)'
-        };
-        border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: ${props => props.isDark ? 
+        'rgba(30, 30, 30, 0.7)' : 
+        'rgba(255, 255, 255, 0.1)'
+    };
+    backdrop-filter: blur(10px);
+    border: 1px solid ${props => props.isDark ? 
+        'rgba(255, 255, 255, 0.1)' : 
+        'rgba(0, 0, 0, 0.2)'
+    };
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    user-select:none;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: ${props => props.isDark ? '#8687af' : '#000000'};
         transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        user-select:none;
+    }
+
+    &:hover {
+        transform: translateX(5px);
+        background: ${props => props.isDark ? 
+            'rgba(40, 40, 40, 0.8)' : 
+            'rgba(255, 255, 255, 0.15)'
+        };
+        box-shadow: 0 8px 32px ${props => props.isDark ? 
+            'rgba(0, 0, 0, 0.3)' : 
+            'rgba(0, 0, 0, 0.1)'
+        };
+
         &:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: ${props => props.isDark ? '#8687af' : '#64658b'};
-            transition: all 0.3s ease;
+            width: 8px;
+            background: ${props => props.isDark ? '#a5a6d4' : '#000000'};
         }
-
-        &:hover {
-            transform: translateX(5px);
-            background: ${props => props.isDark ? 
-                'rgba(40, 40, 40, 0.8)' : 
-                'rgba(255, 255, 255, 0.15)'
-            };
-            box-shadow: 0 4px 10px ${props => props.isDark ? 
-                'rgba(0, 0, 0, 0.3)' : 
-                'rgba(0, 0, 0, 0.1)'
-            };
-
-            &:before {
-                width: 8px;
-                background: ${props => props.isDark ? '#a5a6d4' : '#8687af'};
-            }
-        }
+    }
     `;
 
     const ExperienceDetails = styled.div`
