@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import Experiences from './experiences/experiences';
 import Projects from './projects/projects';
 import Contacts from './contacts/contacts';
-import SectionTracker from './components/SectionTracker';
 
 
 
@@ -108,10 +107,6 @@ function App() {
         ref={contactsRef}
         isDark={isDark}
         toggleTheme={toggleTheme}
-      />
-      <SectionTracker 
-        currentSection={currentSection}
-        isDark={isDark}
       />
     </PageContainer>
   );
