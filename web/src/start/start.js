@@ -50,7 +50,7 @@ export default function Start({ toggleTheme, isDark }){
         width: 100%;
         @media (max-width: 768px) {
             flex-direction: column;
-            gap: 30px;
+            gap: 10px;
         }
     `;
 
@@ -67,6 +67,7 @@ export default function Start({ toggleTheme, isDark }){
             gap: 8%;
             justify-content: flex-start;
             border-right: 0px;
+            gap: 20px;
         }
     `;
 
@@ -110,6 +111,7 @@ export default function Start({ toggleTheme, isDark }){
         padding-top: 20px;
         text-align: Center;
         line-height: 1.5;
+        white-space: nowrap;
 
         a {
             color: ${props => props.isDark ? '#8ab4ff' : '#1a0dab'};
