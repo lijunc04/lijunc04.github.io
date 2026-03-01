@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import DarkModeButton from '../assets/dark-mode-svgrepo-com.svg';
 
-export default function RightNav({ currentSection, toggleTheme, isDark }) {
+export default function RightNav({ currentSection, toggleTheme, isDark}) {
     const RightNavContainer = styled.div`
         position: fixed;
         right: 20px;

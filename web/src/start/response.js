@@ -24,7 +24,7 @@ const StyledText = styled.span`
 `;
 
 let responseState = {
-    index: 0,
+    index: Math.floor(Math.random() * 10 / 2),
     subIndex: 0,
     reverse: false,
     started: false,

@@ -55,13 +55,9 @@ function IconsPanel({ toggleTheme, isDark }) {
                 />
             </Icon> 
             <Icon 
-                onClick={() => {
-                    navigator.clipboard.writeText(email1 + email2)
-                    setShowMessage(true)
-                    setTimeout(() => {
-                        setShowMessage(false);
-                    }, 2500);
-                }}
+                href="mailto://lijun.cai04@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
             >
                 <MdEmail 
                     size={'70%'} 
