@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import Nav from './nav/nav';
+import RightNav from './nav/rightNav';
 import Start from './start/start';
 import styled from 'styled-components';
 import Experiences from './experiences/experiences';
@@ -14,7 +14,7 @@ function App() {
   const projectsRef = useRef(null);
   const contactsRef = useRef(null);
   const [isDark, setIsDark] = useState(false);
-  const [currentSection, setCurrentSection] = useState('start');
+  const [currentSection, setCurrentSection] = useState('home');
 
   // Throttle the scroll handler
   const throttle = (func, limit) => {
@@ -29,35 +29,52 @@ function App() {
   }
 
   useEffect(() => {
-    const handleScroll = throttle(() => {
-      const sections = ['start', 'experience', 'projects', 'contact'];
-      let currentSectionFound = false;
+    const sectionMap = { 'start': 'home', 'experience': 'experience', 'projects': 'projects' };
+    const htmlIds = Object.keys(sectionMap);
+    let scrollTimeout;
+
+    const checkCurrentSection = () => {
+      // Check if we're at the very top of the page
+      if (window.scrollY < 100) {
+        setCurrentSection('home');
+        return;
+      }
       
-      for (const section of sections) {
-        const element = document.getElementById(section);
+      let currentSectionFound = false;
+      for (const htmlId of htmlIds) {
+        const element = document.getElementById(htmlId);
         if (element) {
           const rect = element.getBoundingClientRect();
           if (rect.top >= -100 && rect.top <= window.innerHeight / 2) {
-            if (currentSection !== section) {
-              setCurrentSection(section);
-            }
+            const sectionName = sectionMap[htmlId];
+            setCurrentSection(sectionName);
             currentSectionFound = true;
             break;
           }
         }
       }
 
-
       if (!currentSectionFound && document.documentElement.scrollTop + window.innerHeight >= document.documentElement.scrollHeight) {
-        setCurrentSection('contact');
+        setCurrentSection('projects');
       }
+    };
+
+    const handleScroll = throttle(() => {
+      checkCurrentSection();
+      
+      // Clear existing timeout and set a new one to check position when scrolling stops
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        checkCurrentSection();
+      }, 150);
     }, 100); // Throttle to 100ms
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
     };
-  }, [currentSection]); // Add currentSection as dependency
+  }, []); // Remove currentSection from dependencies
 
   // Memoize toggleTheme to prevent unnecessary re-renders
   const toggleTheme = useCallback(() => {
@@ -72,28 +89,23 @@ function App() {
     color: ${isDark ? '#e3e3e3' : '#000'};
     width: 100vw;
     @media (max-width: 768px) {
-      height: 600vh;
+      height: 100vh;
     }
   `;
 
 
   return (
     <PageContainer>
-      <Nav 
-        onNavSelect={(section) => {
-          section.current.scrollIntoView({ behavior: 'smooth' }); 
-        }}
-        experiencesRef={experiencesRef}
-        projectsRef={projectsRef}
-        contactsRef={contactsRef}
+      <RightNav 
+        currentSection={currentSection}
         toggleTheme={toggleTheme}
         isDark={isDark}
       />
-      <Start
+      <Start 
         isDark={isDark}
         toggleTheme={toggleTheme}
       />
-      <Experiences 
+      {/* <Experiences 
         ref={experiencesRef}
         isDark={isDark}
         toggleTheme={toggleTheme}
@@ -102,12 +114,7 @@ function App() {
         ref={projectsRef}
         isDark={isDark}
         toggleTheme={toggleTheme}
-      />
-      <Contacts 
-        ref={contactsRef}
-        isDark={isDark}
-        toggleTheme={toggleTheme}
-      />
+      /> */}
     </PageContainer>
   );
 }

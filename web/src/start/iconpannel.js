@@ -45,7 +45,7 @@ function IconsPanel({ toggleTheme, isDark }) {
                 />
             </Icon> 
             <Icon 
-                href="https://www.linkedin.com/in/lijun-cai-766468268/"
+                href="https://www.linkedin.com/in/lijuncai/"
                 target="_blank"
                 rel="noopener noreferrer"
             >

@@ -12,7 +12,7 @@ const ToastContainer = styled.div`
     left: 50%;
     transform: translateX(-50%);
     bottom: 80px;
-    background-color: #323232;
+    background-color: #000000;
     color: white;
     padding: 10px 20px;
     border-radius: 10px;

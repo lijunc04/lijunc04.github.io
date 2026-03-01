@@ -1,15 +1,33 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import photo from '../assets/me_aged_9.jpg'
 import Response from "./response";
 import IconsPanel from "./iconpannel";
 import Resume from '../assets/resume.pdf'
+import { useEffect, useState } from "react";
 
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+`;
+
+let hasImageAnimated = false;
 
 export default function Start({ toggleTheme, isDark }){
+    const [shouldAnimate, setShouldAnimate] = useState(false);
+
+    useEffect(() => {
+        if (!hasImageAnimated) {
+            setShouldAnimate(true);
+            hasImageAnimated = true;
+        }
+    }, []);
     const Container = styled.div`
         display: flex;
-        height: 90vh;
-        flex-direction: column;
+        height: 100vh;
         background-color: ${isDark ? '#1a1b1e' : '#FFFFFF'};
         color: ${isDark ? '#e3e3e3' : '#000000'};
         overflow: hidden;
@@ -29,9 +47,10 @@ export default function Start({ toggleTheme, isDark }){
     const SplitLayout = styled.div`
         display: flex;
         flex: 1;
-        width: 100%;   
+        width: 100%;
         @media (max-width: 768px) {
             flex-direction: column;
+            gap: 30px;
         }
     `;
 
@@ -40,12 +59,10 @@ export default function Start({ toggleTheme, isDark }){
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 5%;
-        overflow: auto;
+        gap: 4%;
         justify-content: center;
         
         @media (max-width: 768px) {
-            min-height: 70vh;
             padding: 40px 0;
             gap: 8%;
             justify-content: flex-start;
@@ -60,7 +77,6 @@ export default function Start({ toggleTheme, isDark }){
         justify-content: center;
         align-items: left;
         padding: 6% 10% 6% 4%;
-        overflow: none;
 
         @media (max-width: 768px) {
             padding: 20px 8% 40px 8%;
@@ -76,7 +92,8 @@ export default function Start({ toggleTheme, isDark }){
         height: auto;
         border-radius: 50%;
         object-fit: cover;
-        box-shadow: -2px 8px 24px -3px #000000;
+        box-shadow: -2px 8px 12px -3px #000000;
+        ${props => props.shouldAnimate && css`animation: ${fadeIn} 0.6s ease-in;`}
 
         @media (max-width: 768px) {
             margin-bottom: 20px;
@@ -93,6 +110,16 @@ export default function Start({ toggleTheme, isDark }){
         padding-top: 20px;
         text-align: Center;
         line-height: 1.5;
+
+        a {
+            color: ${props => props.isDark ? '#8ab4ff' : '#1a0dab'};
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     `;
 
     const ResumeButton = styled.div`
@@ -191,8 +218,9 @@ export default function Start({ toggleTheme, isDark }){
                         <CircularImage 
                             src={photo} 
                             alt="Me aged 9 (maybe, I don't actually remember)"
+                            shouldAnimate={shouldAnimate}
                         />
-                        <IntroText>Hi, I'm <b>Lijun Cai</b><br/>CS @ UMass Amherst.</IntroText>
+                        <IntroText isDark={isDark}>Hi, I'm <b>Lijun Cai 蔡礼骏</b><br/>CS @ <a href="https://www.cics.umass.edu/" target="_blank" rel="noreferrer">UMass Amherst</a>.</IntroText>
                         <ResumeButton onClick={()=>window.open(Resume,  '_blank')}>My Résumé</ResumeButton>
                         <IconsPanel                
                             toggleTheme={toggleTheme}
@@ -203,7 +231,7 @@ export default function Start({ toggleTheme, isDark }){
                     <Block>
                         <BigText>About Me</BigText>
                         <ResponseText isDark={isDark}>
-                            I am a computer science undergraduate student at <a href="https://www.cics.umass.edu/" target="_blank" rel="noreferrer">CICS</a> of the University of Massachusetts Amherst, graduating in <b>May 2026</b>. I am also a visiting student at the <a href="https://spherelab.ai/"target="_blank" rel="noreferrer"> Sphere Lab</a> of Chinese University of Hong Kong advised by Assistant Prof. Weiyang Liu. Previously I was a visiting student at the <a href="https://www.vogue.cs.titech.ac.jp/" rel="noreferrer"
+                            I am a computer science undergraduate student at <a href="https://www.cics.umass.edu/" target="_blank" rel="noreferrer">CICS</a> of the University of Massachusetts Amherst, graduating in <b>May 2026</b>. I am also a visiting student at the <a href="https://spherelab.ai/"target="_blank" rel="noreferrer"> Sphere Lab</a> of Chinese University of Hong Kong advised by Assistant Prof. <a href="https://www.wyliu.com" target="_blank" rel="noreferrer">Weiyang Liu</a>. Previously I breifly visited the <a href="https://www.vogue.cs.titech.ac.jp/" rel="noreferrer"
                             target="_blank">Koike Lab</a> at the Institute of Science Tokyo advised by Assistant Prof. Yichen Peng. 
                             <br />
                             <br />

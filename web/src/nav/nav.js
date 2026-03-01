@@ -56,7 +56,6 @@ export default function Nav({ onNavSelect, experiencesRef, projectsRef, contacts
             <NavItems>
                 <NavItem onClick={() => onNavSelect(experiencesRef)}>Experiences</NavItem>
                 <NavItem onClick={() => onNavSelect(projectsRef)}>Projects</NavItem>
-                <NavItem onClick={() => onNavSelect(contactsRef)}>Contacts</NavItem>
             </NavItems>
             <NightMode toggleTheme={toggleTheme} isDark={isDark} />
         </NavContainer>

@@ -6,10 +6,11 @@ const StyledText = styled.span`
     font-size: 17px;
     font-weight: normal;
     border-right: 2px solid;
-    max-height: 17px;
+    height: 28px;
     display: inline-flex;
-    line-height:1.2;
-
+    line-height: 28px;
+    white-space: nowrap;
+    overflow: hidden;
 
     color: ${props => props.isDark ? '#FFF' : '#000'};
     user-select: none;
@@ -22,11 +23,18 @@ const StyledText = styled.span`
     animation: blink-caret 1.2s step-end infinite;
 `;
 
+let responseState = {
+    index: 0,
+    subIndex: 0,
+    reverse: false,
+    started: false,
+};
+
 const Response = memo(function Response({ words, startTime, isDark }) {
-    const [index, setIndex] = useState(0);
-    const [subIndex, setSubIndex] = useState(0);
-    const [reverse, setReverse] = useState(false);
-    const [started, setStarted] = useState(false);
+    const [index, setIndex] = useState(responseState.index || 0);
+    const [subIndex, setSubIndex] = useState(responseState.subIndex || 0);
+    const [reverse, setReverse] = useState(responseState.reverse || false);
+    const [started, setStarted] = useState(responseState.started || false);
 
     const updateIndexes = useCallback(() => {
         if (subIndex > words[index].length && !reverse) {
@@ -65,12 +73,25 @@ const Response = memo(function Response({ words, startTime, isDark }) {
     }, [subIndex, reverse, index, words]);
 
     useEffect(() => {
+        if (responseState.started) {
+            setStarted(true);
+            return;
+        }
+
         const startTimeout = setTimeout(() => {
             setStarted(true);
+            responseState.started = true;
         }, startTime);
 
         return () => clearTimeout(startTimeout);
     }, [startTime]);
+
+    useEffect(() => {
+        responseState.index = index;
+        responseState.subIndex = subIndex;
+        responseState.reverse = reverse;
+        responseState.started = started;
+    }, [index, subIndex, reverse, started]);
 
     useEffect(() => {
         if (!started) return;
