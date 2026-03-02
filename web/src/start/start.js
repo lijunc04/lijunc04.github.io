@@ -37,7 +37,7 @@ export default function Start({ toggleTheme, isDark }){
         
         @media (max-width: 768px) {
             height: auto;
-            min-height: 100vh;
+            min-height: 100dvh;
             overflow: visible;
 
         }
