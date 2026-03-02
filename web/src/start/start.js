@@ -27,10 +27,9 @@ export default function Start({ toggleTheme, isDark }){
     }, []);
     const Container = styled.div`
         display: flex;
-        height: 100vh;
+        min-height: 100vh;
         background-color: ${isDark ? '#1a1b1e' : '#FFFFFF'};
         color: ${isDark ? '#e3e3e3' : '#000000'};
-        overflow: hidden;
         
         @media (max-height: 500px) {
             overflow: auto;
@@ -39,8 +38,8 @@ export default function Start({ toggleTheme, isDark }){
         @media (max-width: 768px) {
             height: auto;
             min-height: 100vh;
-            overflow: auto;
-            padding-bottom: 20px;
+            overflow: visible;
+
         }
     `;
 
@@ -50,7 +49,6 @@ export default function Start({ toggleTheme, isDark }){
         width: 100%;
         @media (max-width: 768px) {
             flex-direction: column;
-            gap: 10px;
         }
     `;
 
@@ -63,9 +61,10 @@ export default function Start({ toggleTheme, isDark }){
         justify-content: center;
         
         @media (max-width: 768px) {
+            min-height:100vh;
             padding: 40px 0;
             gap: 8%;
-            justify-content: flex-start;
+            justify-content: center;
             border-right: 0px;
             gap: 20px;
         }
@@ -80,8 +79,7 @@ export default function Start({ toggleTheme, isDark }){
         padding: 6% 10% 6% 4%;
 
         @media (max-width: 768px) {
-            padding: 20px 8% 40px 8%;
-            min-height: 60vh;
+            padding: 0 8% 40px 8%;
             justify-content: flex-start;
             gap: 20px;
         }
