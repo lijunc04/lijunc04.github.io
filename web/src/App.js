@@ -5,7 +5,32 @@ import styled from 'styled-components';
 import Experiences from './experiences/experiences';
 import Projects from './projects/projects';
 import Contacts from './contacts/contacts';
+import { createGlobalStyle } from 'styled-components';
 
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: ${props => props.$isDark ? '#1a1b1e' : '#f2f2f2'};
+  color: ${props => props.$isDark ? '#e3e3e3' : '#000'};
+  width: 100vw;
+  height: 100vh;
+  @media (max-width: 768px) {
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    height: auto;
+  }
+`;
+
+// Also move GlobalStyle outside
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: ${props => props.$isDark ? '#1a1b1e' : '#f2f2f2'};
+    overflow-x: hidden;
+    width: 100%;
+  }
+`;
 
 
 function App() {
@@ -81,50 +106,32 @@ function App() {
     setIsDark(prev => !prev);
   }, []);
 
-  // Move styled component outside component
-  const PageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    background-color: ${isDark ? '#1a1b1e' : '#f2f2f2'};
-    color: ${isDark ? '#e3e3e3' : '#000'};
-    width: 100vw;
-    height: 100vh;
-    @media (max-width: 768px) {
-      min-height: 100vh; /* Fallback for very old browsers */
-      min-height: calc(var(--vh, 1vh) * 100);
-      height: auto;
-    }
-  `;
-
-  useEffect(() => {
+useEffect(() => {
   const updateHeight = () => {
-    // visualViewport.height is the most accurate "visible" area
-    // falling back to innerHeight if not supported
-    const vvHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-    const vh = vvHeight * 0.01;
+    // We get the height once when called
+    const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   };
 
-  // Chrome iOS needs to listen to the visualViewport specifically
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateHeight);
-    window.visualViewport.addEventListener('scroll', updateHeight);
-  }
-
-  window.addEventListener('resize', updateHeight);
+  // 1. Set initial height on mount
   updateHeight();
 
+  // 2. Only update when the device flips, NOT on scroll/resize
+  window.addEventListener('orientationchange', () => {
+    // Small timeout ensures the browser has finished rotating 
+    // before we measure the new height
+    setTimeout(updateHeight, 200);
+  });
+
   return () => {
-    if (window.visualViewport) {
-      window.visualViewport.removeEventListener('resize', updateHeight);
-      window.visualViewport.removeEventListener('scroll', updateHeight);
-    }
-    window.removeEventListener('resize', updateHeight);
+    window.removeEventListener('orientationchange', updateHeight);
   };
 }, []);
 
   return (
-    <PageContainer>
+    <>
+    <GlobalStyle $isDark={isDark} />
+        <PageContainer>
       <RightNav 
         currentSection={currentSection}
         toggleTheme={toggleTheme}
@@ -145,6 +152,8 @@ function App() {
         toggleTheme={toggleTheme}
       /> */}
     </PageContainer>
+    </>
+
   );
 }
 

@@ -12,7 +12,7 @@ export default function RightNav({ currentSection, toggleTheme, isDark}) {
         gap: 20px;
         z-index: 1000;
         @media (max-width: 768px) {
-            display: none;
+            display:fixed;
         }
     `;
 
