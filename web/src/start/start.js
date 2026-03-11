@@ -10,13 +10,15 @@ const fadeIn = keyframes`
     to   { opacity: 1; }
 `;
 
-// ─── All styled components OUTSIDE the function ───────────────────────────────
+
+const themeTransition = 'background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease';
 
 const Container = styled.div`
     display: flex;
     min-height: 100%;
     background-color: ${props => props.$isDark ? '#1a1b1e' : '#FFFFFF'};
     color: ${props => props.$isDark ? '#e3e3e3' : '#000000'};
+    transition: ${themeTransition};
 
     @media (max-height: 500px) {
         overflow-y: auto;
@@ -98,9 +100,11 @@ const IntroText = styled.div`
     text-align: center;
     line-height: 1.5;
     white-space: nowrap;
+    transition: ${themeTransition};
 
     a {
         color: ${props => props.$isDark ? '#8ab4ff' : '#1a0dab'};
+        transition: ${themeTransition};
         text-decoration: none;
         font-weight: 600;
     }
@@ -115,6 +119,7 @@ const ResumeButton = styled.div`
     border-radius: 20px;
     text-align: center;
     padding: 5px 10px;
+    transition: ${themeTransition};
 
     &:hover {
         background-color: ${props => props.$isDark ? '#404249' : '#A0A095'};
@@ -135,6 +140,7 @@ const Block = styled.div`
 const BigText = styled.div`
     font-size: 20px;
     color: ${props => props.$isDark ? '#ffffff' : '#000000'};
+    transition: ${themeTransition};
 `;
 
 const InlineRow = styled.div`
@@ -158,6 +164,7 @@ const SkillText = styled.div`
     text-align: center;
     padding: 5px 10px;
     user-select: none;
+    transition: ${themeTransition};
 
     &:hover {
         background-color: ${props => props.$isDark ? '#404249' : '#A0A095'};
@@ -181,11 +188,13 @@ const ResponseText = styled.div`
     opacity: 0.95;
     padding: 15px 0 0 10px;
     cursor: pointer;
+    transition: ${themeTransition};
 
     a {
         color: ${props => props.$isDark ? '#8ab4ff' : '#1a0dab'};
         text-decoration: none;
         font-weight: 600;
+        transition: ${themeTransition};
     }
     a:hover {
         text-decoration: underline;

@@ -27,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: ${props => props.$isDark ? '#1a1b1e' : '#f2f2f2'};
+    transition: background-color 0.5s ease;
     overflow-x: hidden;
     width: 100%;
   }

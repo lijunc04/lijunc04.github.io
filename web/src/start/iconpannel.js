@@ -22,11 +22,13 @@ const Icon = styled.a`
   align-items: center;
   border-radius: 50%; // Makes it circular, remove if not needed
   text-decoration: none; // Removes underline from links
-
   &:hover {
     background-color: #bbb; // Slightly darker on hover
     cursor: pointer;
   }
+    svg{
+    transition: color 0.5s ease;
+    }
 `;
 
 const email2 = 'cai@umass.edu'
