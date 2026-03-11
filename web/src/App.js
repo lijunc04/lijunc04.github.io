@@ -85,7 +85,7 @@ function App() {
   const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: ${isDark ? '#1a1b1e' : '#FFFFFF'};
+    background-color: ${isDark ? '#1a1b1e' : '#f2f2f2'};
     color: ${isDark ? '#e3e3e3' : '#000'};
     width: 100vw;
     height: 100vh;
