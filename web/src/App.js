@@ -88,11 +88,40 @@ function App() {
     background-color: ${isDark ? '#1a1b1e' : '#FFFFFF'};
     color: ${isDark ? '#e3e3e3' : '#000'};
     width: 100vw;
+    height: 100vh;
     @media (max-width: 768px) {
-      height: 100vh;
+      min-height: 100vh; /* Fallback for very old browsers */
+      min-height: calc(var(--vh, 1vh) * 100);
+      height: auto;
     }
   `;
 
+  useEffect(() => {
+  const updateHeight = () => {
+    // visualViewport.height is the most accurate "visible" area
+    // falling back to innerHeight if not supported
+    const vvHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    const vh = vvHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  // Chrome iOS needs to listen to the visualViewport specifically
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', updateHeight);
+    window.visualViewport.addEventListener('scroll', updateHeight);
+  }
+
+  window.addEventListener('resize', updateHeight);
+  updateHeight();
+
+  return () => {
+    if (window.visualViewport) {
+      window.visualViewport.removeEventListener('resize', updateHeight);
+      window.visualViewport.removeEventListener('scroll', updateHeight);
+    }
+    window.removeEventListener('resize', updateHeight);
+  };
+}, []);
 
   return (
     <PageContainer>

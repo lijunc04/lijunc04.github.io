@@ -27,7 +27,7 @@ export default function Start({ toggleTheme, isDark }){
     }, []);
     const Container = styled.div`
         display: flex;
-        min-height: 100vh;
+        min-height: 100%;
         background-color: ${isDark ? '#1a1b1e' : '#FFFFFF'};
         color: ${isDark ? '#e3e3e3' : '#000000'};
         
@@ -36,10 +36,8 @@ export default function Start({ toggleTheme, isDark }){
         }
         
         @media (max-width: 768px) {
-            height: auto;
-            min-height: 100dvh;
+            min-height: 100%;
             overflow: visible;
-
         }
     `;
 
@@ -61,7 +59,7 @@ export default function Start({ toggleTheme, isDark }){
         justify-content: center;
         
         @media (max-width: 768px) {
-            min-height:100vh;
+            min-height:100dvh;
             padding: 40px 0;
             gap: 8%;
             justify-content: center;
