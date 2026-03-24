@@ -40,6 +40,7 @@ function IconsPanel({ toggleTheme, isDark }) {
                 href="https://github.com/lijunc04"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Lijun's Github Page"
             >
                 <FaGithubSquare 
                     size={'70%'} 
@@ -50,6 +51,7 @@ function IconsPanel({ toggleTheme, isDark }) {
                 href="https://www.linkedin.com/in/lijuncai/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Lijun's LinkedIn Page"
             >
                 <FaLinkedin 
                     size={'70%'} 
@@ -60,6 +62,7 @@ function IconsPanel({ toggleTheme, isDark }) {
                 href="mailto://lijun.cai04@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Lijun's Email"
             >
                 <MdEmail 
                     size={'70%'} 
