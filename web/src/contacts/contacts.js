@@ -25,7 +25,7 @@ const ContactOptionsContainer = styled.div`
     flex-wrap: wrap;
     padding: 0 20px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         gap: 20px;
     }
 `;

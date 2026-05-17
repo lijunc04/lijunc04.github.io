@@ -12,7 +12,7 @@ export default function Nav({ onNavSelect, experiencesRef, projectsRef, contacts
         justify-content: center;
         align-items: center;
         padding: 10px 20px;
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             display: none;  
         }
     `;

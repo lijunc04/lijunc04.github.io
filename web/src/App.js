@@ -16,7 +16,7 @@ const PageContainer = styled.div`
   height: 100vh;
   margin: 0 auto; 
   box-sizing: border-box;
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     min-height: 100vh;
     width: 100vw;
     min-height: calc(var(--vh, 1vh) * 100);
@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     margin: 0;
     padding: 0;
-    background-color: ${props => props.$isDark ? '#1a1b1e' : '#fdffe6'};
+    background-color: ${props => props.$isDark ? '#1a1b1e' : '#f6f7ea'};
     transition: all 0.5s ease;
     overflow-x: hidden;
     width: 100%;

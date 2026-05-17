@@ -22,7 +22,7 @@ const Container = styled.div`
         overflow-y: visible;
         display: block;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         min-height: 100%;
         overflow: visible;
     }
@@ -32,7 +32,7 @@ const SplitLayout = styled.div`
     display: flex;
     flex: 1;
     width: 100%;
-    @media (max-width: 768px) or (max-height: 650px) {
+    @media (max-width: 900px) or (max-height: 650px) {
         flex-direction: column;
     }
 `;
@@ -44,7 +44,7 @@ const LeftSection = styled.div`
     align-items: center;
     gap: 4%;
     justify-content: center;
-    @media (max-width: 768px) or (max-height: 650px) {
+    @media (max-width: 900px) or (max-height: 650px) {
         min-height: 100dvh;
         padding: 40px 0;
         gap: 20px;
@@ -65,7 +65,7 @@ const RightSection = styled.div`
     align-items: left;
     padding: 6% 10% 6% 4%;
 
-    @media (max-width: 768px) or (max-height: 650px){
+    @media (max-width: 900px) or (max-height: 650px){
         padding: 0 8% 40px 8%;
         justify-content: flex-start;
         gap: 20px;
@@ -82,7 +82,7 @@ const CircularImage = styled.img`
     ${props => props.$shouldAnimate && css`animation: ${fadeIn} 0.6s ease-in;`}
     transition: ${themeTransition};
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         margin-bottom: 20px;
         max-width: 150px;
         width: 40%;
@@ -114,13 +114,13 @@ const Block = styled.div`
     padding-bottom: 5%;
     font-weight: bold;
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         padding-bottom: 20px;
     }
 `;
 
 const BigText = styled.div`
-    font-size: clamp(1rem, 1rem + 0.2dvw, 1.5rem);
+    font-size: clamp(0.95rem, 0.95rem + 0.2dvw, 1.5rem);
     color: ${props => props.$isDark ? '#ffffff' : '#000000'};
     transition: ${themeTransition};
 `;
@@ -164,14 +164,25 @@ const ResponseContainer = styled.div`
 `;
 
 const ResponseText = styled.div`
-    font-size: clamp(0.7rem, 0.7rem + 0.2dvw, 1.1rem);
-    line-height: 1.5;
+    font-size: clamp(0.8rem, 0.8rem + 0.2dvw, 1.1rem);
+    line-height: 1.1;
     font-weight: normal;
     color: ${props => props.$isDark ? '#e3e3e3' : '#000000'};
     opacity: 0.95;
     padding: 15px 0 0 10px;
     cursor: pointer;
     transition: ${themeTransition};
+    ol {
+        margin: 10px 0 0 0;
+        padding-left: 20px; /* Aligns numbers nicely with the paragraph */
+        display: flex;
+        flex-direction: column;
+        gap: 12px; /* Adjust this value (e.g., 10px, 12px, 16px) to control the gap size */
+    }
+
+    li {
+        font-weight: normal;
+    }
     a {
         color: ${props => props.$isDark ? '#8ab4ff' : '#1a0dab'};
         text-decoration: none;
@@ -181,7 +192,7 @@ const ResponseText = styled.div`
     a:hover {
         text-decoration: underline;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         font-size: 15px;
         padding: 10px 0;
     }
@@ -192,7 +203,7 @@ let hasImageAnimated = false;
 const skillList = [
     'Python', 'PyTorch', 'OpenCV', 'Yolo', 'Java', 'C', 'React', 'Expo',
     'MongoDB', 'Node.js', 'JavaScript', 'TypeScript', 'CSS', 'Git', 'Flask',
-    'Firebase', 'AWS Rekognition', 'Mujoco', 'Gymnasium'
+    'Firebase', 'AWS Rekognition', 'Mujoco'
 ];
 
 export default function Start({ toggleTheme, isDark }) {
@@ -245,8 +256,10 @@ export default function Start({ toggleTheme, isDark }) {
                             <br /><br />
 
                             I am interested in research topics such as<br />
-                            1. Representation learning and its applications for interesting real world problems.<br />
-                            2. Algorithms for training &amp; post-training large deep learning models.
+                            <ol>
+                                <li>Algorithms for training &amp; post-training large deep learning models.</li>
+                                <li>Representation learning and its applications for solving interesting real world problems.</li>
+                            </ol>
                         </ResponseText>
                     </Block>
 
