@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
     transition: background-color 0.5s ease;
     overflow-x: hidden;
     width: 100%;
+    font-family: "Gill Sans", sans-serif;
   }
 `;
 

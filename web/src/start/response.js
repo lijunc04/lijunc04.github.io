@@ -45,9 +45,9 @@ const Response = memo(function Response({ words, startTime, isDark }) {
         if (subIndex === 0 && reverse) {
             setReverse(false);
             var old_index = index;
-            var new_index = Math.floor(Math.random() * 10 / 2);
+            var new_index = Math.floor(Math.random() * 6);
             while (new_index === old_index){
-                new_index = Math.floor(Math.random() * 10 / 2)
+                new_index = Math.floor(Math.random() * 6)
             }
             setIndex(new_index);
             return;

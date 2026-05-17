@@ -243,11 +243,11 @@ export default function Start({ toggleTheme, isDark }) {
                         $shouldAnimate={shouldAnimate}
                     />
                     <IntroText $isDark={isDark}>
-                        Hi, I'm <b>Lijun Cai 蔡礼骏</b><br />
-                        CS @ <a href="https://www.cics.umass.edu/" target="_blank" rel="noreferrer">UMass Amherst</a>.
+                        Hi, I'm <b>Lijun Cai 蔡礼骏 :)</b><br />
+                        CS @ <a href="https://www.cics.umass.edu/" rel="noreferrer">UMass Amherst</a>.
                     </IntroText>
                     <ResumeButton $isDark={isDark} onClick={() => window.open(Resume, '_blank')}>
-                        My Résumé
+                        Résumé
                     </ResumeButton>
                     <IconsPanel toggleTheme={toggleTheme} isDark={isDark} />
                 </LeftSection>
@@ -256,20 +256,21 @@ export default function Start({ toggleTheme, isDark }) {
                     <Block>
                         <BigText $isDark={isDark}>About Me</BigText>
                         <ResponseText $isDark={isDark}>
-                            I am a computer science undergraduate student at{' '}
-                            <a href="https://www.cics.umass.edu/" target="_blank" rel="noreferrer">CICS</a>{' '}
-                            of the University of Massachusetts Amherst, graduating in <b>May 2026</b>. I am also a
-                            visiting student at the{' '}
-                            <a href="https://spherelab.ai/" target="_blank" rel="noreferrer">Sphere Lab</a>{' '}
-                            of Chinese University of Hong Kong advised by Assistant Prof.{' '}
-                            <a href="https://www.wyliu.com" target="_blank" rel="noreferrer">Weiyang Liu</a>.
+                            Welcome! 👋<br/><br/>
+
+                            I am an upcoming MPhil CSE student at the <a href='https://www.cuhk.edu.hk' rel='noreferrer'>Chinese University of Hong Kong</a> starting Fall 2026, advised by Prof.{' '}
+                            <a href="https://www.wyliu.com" rel="noreferrer">Weiyang Liu</a>. I will also be joining the {' '}
+                            <a href="https://spherelab.ai/" rel="noreferrer">Sphere Lab</a> after visiting.<br/><br/>
+                            
+                            I completed by my Bachelor of Science degree in computer science at <a href="https://www.cics.umass.edu" rel="noreferrer">CICS</a>{' '} of the <a href="https://www.umass.edu/" rel="noreferrer">University of Massachusetts Amherst</a> in May 2026. 
                             Previously I briefly visited the{' '}
-                            <a href="https://www.vogue.cs.titech.ac.jp/" rel="noreferrer" target="_blank">Koike Lab</a>{' '}
-                            at the Institute of Science Tokyo advised by Assistant Prof. Yichen Peng.
+                            <a href="https://www.vogue.cs.titech.ac.jp/" rel="noreferrer">Koike Lab</a>{' '}
+                            at the Institute of Science Tokyo advised by Prof. Yichen Peng.
                             <br /><br />
-                            I am interested in research focusing on<br />
-                            1. Representation learning<br />
-                            2. Principle algorithms for large deep learning model training &amp; post-training.
+
+                            I am interested in research topics such as<br />
+                            1. Representation learning and its applications for interesting real world problems.<br />
+                            2. Algorithms for training &amp; post-training large deep learning models.
                         </ResponseText>
                     </Block>
 
@@ -280,7 +281,7 @@ export default function Start({ toggleTheme, isDark }) {
                                 <Response
                                     toggleTheme={toggleTheme}
                                     isDark={isDark}
-                                    words={['Soccer  ⚽️', 'Music Making  🎵', 'Football Manager  🕹️', 'Traveling  🌏', 'Skiing  ⛷️']}
+                                    words={['Soccer  ⚽️', 'Music Making  🎵', 'Football Manager  🕹️', 'Traveling  🌏', 'Skiing  ⛷️', 'Bayern Munich 🔴⚪️']}
                                     startTime={240}
                                 />
                             </ResponseContainer>
