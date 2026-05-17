@@ -32,7 +32,7 @@ export default function Nav({ onNavSelect, experiencesRef, projectsRef, contacts
             bottom: -5px;
             left: 50%;
             background-color: ${isDark ? '#e3e3e3' : '#000'};
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
             transform: translateX(-50%);
         }
 

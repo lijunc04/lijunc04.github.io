@@ -1,76 +1,68 @@
 import styled from 'styled-components';
-import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import Message from "../trivials/message";
-import { useState } from 'react';
+import Resume from '../assets/resume.pdf';
 
-const email1 = 'lijun'
+const themeTransition = 'color 0.5s ease';
 
-const IconsContainer = styled.div`
+const LinksContainer = styled.div`
   display: flex;
-  justify-content: space-around; // This will distribute space equally between icons
   align-items: center;
-  padding: 10px;
-  width: 50%;
-`;
-
-const Icon = styled.a`
-  width: 50px; // Adjust size as necessary
-  height: 50px;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  border-radius: 50%; // Makes it circular, remove if not needed
-  text-decoration: none; // Removes underline from links
-  &:hover {
-    background-color: #bbb; // Slightly darker on hover
-    cursor: pointer;
-  }
-    svg{
-    transition: color 0.5s ease;
-    }
+  gap: 8px;
+  margin-top: 15px;
+  font-size: 16px;
+  color: ${props => props.$isDark ? '#888' : '#666'};
+  transition: ${themeTransition};
+  user-select: none;
 `;
 
-const email2 = 'cai@umass.edu'
-function IconsPanel({ toggleTheme, isDark }) {
-    const [showMessage, setShowMessage] = useState(false);
+const TextLink = styled.a`
+  color: ${props => props.$isDark ? '#8ab4ff' : '#1a0dab'};
+  text-decoration: none;
+  font-weight: 500;
+  transition: ${themeTransition};
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+function IconsPanel({ isDark }) {
     return (
-        <IconsContainer>
-            <Icon 
-                href="https://github.com/lijunc04"
-                target="_blank"
+        <LinksContainer $isDark={isDark}>
+            <TextLink 
+                href="https://github.com/lijunc04" 
+                target="_blank" 
                 rel="noopener noreferrer"
-                aria-label="Lijun's Github Page"
+                $isDark={isDark}
             >
-                <FaGithubSquare 
-                    size={'70%'} 
-                    color={isDark ? '#FFF' : '#000'}
-                />
-            </Icon> 
-            <Icon 
-                href="https://www.linkedin.com/in/lijuncai/"
-                target="_blank"
+                GitHub
+            </TextLink>
+            <span><b>/</b></span>
+            <TextLink 
+                href="https://www.linkedin.com/in/lijuncai/" 
+                target="_blank" 
                 rel="noopener noreferrer"
-                aria-label="Lijun's LinkedIn Page"
+                $isDark={isDark}
             >
-                <FaLinkedin 
-                    size={'70%'} 
-                    color={isDark ? '#FFF' : '#000'}
-                />
-            </Icon> 
-            <Icon 
-                href="mailto://lijun.cai04@gmail.com"
-                target="_blank"
+                LinkedIn
+            </TextLink>
+            <span><b>/</b></span>
+            <TextLink 
+                href={Resume} 
+                target="_blank" 
                 rel="noopener noreferrer"
-                aria-label="Lijun's Email"
+                $isDark={isDark}
             >
-                <MdEmail 
-                    size={'70%'} 
-                    color={isDark ? '#FFF' : '#000'}
-                />
-            </Icon>
-            <Message message='Email Address Copied!' show={showMessage}/>
-        </IconsContainer>
+                Résumé
+            </TextLink>
+            <span><b>/</b></span>
+            <TextLink 
+                href="mailto:lijun.cai04@gmail.com"
+                $isDark={isDark}
+            >
+                Email
+            </TextLink>
+        </LinksContainer>
     );
 }
 

@@ -1,8 +1,7 @@
 import styled, { keyframes, css } from "styled-components";
 import photo from '../assets/me_aged_9.jpg'
 import Response from "./response";
-import IconsPanel from "./iconpannel";
-import Resume from '../assets/resume.pdf'
+import IconsPanel from "./iconpannel"; // Updated below
 import { useEffect, useState } from "react";
 
 const fadeIn = keyframes`
@@ -10,13 +9,12 @@ const fadeIn = keyframes`
     to   { opacity: 1; }
 `;
 
-
-const themeTransition = 'background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease';
+const themeTransition = 'all 0.5s ease';
 
 const Container = styled.div`
     display: flex;
     min-height: 100%;
-    background-color: ${props => props.$isDark ? '#1a1b1e' : '#FFFFFF'};
+    background-color: transparent;
     color: ${props => props.$isDark ? '#e3e3e3' : '#000000'};
     transition: ${themeTransition};
 
@@ -46,7 +44,6 @@ const LeftSection = styled.div`
     align-items: center;
     gap: 4%;
     justify-content: center;
-
     @media (max-width: 768px) {
         min-height: 100dvh;
         padding: 40px 0;
@@ -113,21 +110,6 @@ const IntroText = styled.div`
     }
 `;
 
-const ResumeButton = styled.div`
-    background-color: ${props => props.$isDark ? '#2d2f34' : '#000'};
-    color: ${props => props.$isDark ? '#e3e3e3' : '#FFFFFF'};
-    border-radius: 20px;
-    text-align: center;
-    padding: 5px 10px;
-    transition: ${themeTransition};
-
-    &:hover {
-        background-color: ${props => props.$isDark ? '#404249' : '#A0A095'};
-        color: ${props => props.$isDark ? '#ffffff' : '#000000'};
-        cursor: pointer;
-    }
-`;
-
 const Block = styled.div`
     padding-bottom: 5%;
     font-weight: bold;
@@ -138,7 +120,7 @@ const Block = styled.div`
 `;
 
 const BigText = styled.div`
-    font-size: 20px;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.5rem);
     color: ${props => props.$isDark ? '#ffffff' : '#000000'};
     transition: ${themeTransition};
 `;
@@ -181,15 +163,14 @@ const ResponseContainer = styled.div`
 `;
 
 const ResponseText = styled.div`
+    font-size: clamp(0.95rem, 0.85rem + 0.4dvw, 1.1rem);
     line-height: 1.5;
-    font-size: 16px;
     font-weight: normal;
     color: ${props => props.$isDark ? '#e3e3e3' : '#000000'};
     opacity: 0.95;
     padding: 15px 0 0 10px;
     cursor: pointer;
     transition: ${themeTransition};
-
     a {
         color: ${props => props.$isDark ? '#8ab4ff' : '#1a0dab'};
         text-decoration: none;
@@ -205,7 +186,6 @@ const ResponseText = styled.div`
     }
 `;
 
-// ─── Module-level flag so it truly only fires once per page load ───────────────
 let hasImageAnimated = false;
 
 const skillList = [
@@ -214,10 +194,8 @@ const skillList = [
     'Firebase', 'AWS Rekognition', 'Mujoco', 'Gymnasium'
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
 export default function Start({ toggleTheme, isDark }) {
     const [shouldAnimate, setShouldAnimate] = useState(() => {
-        // Initialise synchronously so the very first render already knows
         if (!hasImageAnimated) {
             hasImageAnimated = true;
             return true;
@@ -225,7 +203,6 @@ export default function Start({ toggleTheme, isDark }) {
         return false;
     });
 
-    // Once the animation has played, remove the prop so it won't re-trigger
     useEffect(() => {
         if (shouldAnimate) {
             const timer = setTimeout(() => setShouldAnimate(false), 600);
@@ -246,10 +223,8 @@ export default function Start({ toggleTheme, isDark }) {
                         Hi, I'm <b>Lijun Cai 蔡礼骏 :)</b><br />
                         CS @ <a href="https://www.cics.umass.edu/" rel="noreferrer">UMass Amherst</a>.
                     </IntroText>
-                    <ResumeButton $isDark={isDark} onClick={() => window.open(Resume, '_blank')}>
-                        Résumé
-                    </ResumeButton>
-                    <IconsPanel toggleTheme={toggleTheme} isDark={isDark} />
+                    {/* Revamped clean link row component */}
+                    <IconsPanel isDark={isDark} />
                 </LeftSection>
 
                 <RightSection>
@@ -262,7 +237,7 @@ export default function Start({ toggleTheme, isDark }) {
                             <a href="https://www.wyliu.com" rel="noreferrer">Weiyang Liu</a>. I will also be joining the {' '}
                             <a href="https://spherelab.ai/" rel="noreferrer">Sphere Lab</a> after visiting.<br/><br/>
                             
-                            I completed by my Bachelor of Science degree in computer science at <a href="https://www.cics.umass.edu" rel="noreferrer">CICS</a>{' '} of the <a href="https://www.umass.edu/" rel="noreferrer">University of Massachusetts Amherst</a> in May 2026. 
+                            I completed my Bachelor of Science degree in computer science at <a href="https://www.cics.umass.edu" rel="noreferrer">CICS</a>{' '} of the <a href="https://www.umass.edu/" rel="noreferrer">University of Massachusetts Amherst</a> in May 2026. 
                             Previously I briefly visited the{' '}
                             <a href="https://www.vogue.cs.titech.ac.jp/" rel="noreferrer">Koike Lab</a>{' '}
                             at the Institute of Science Tokyo advised by Prof. Yichen Peng.

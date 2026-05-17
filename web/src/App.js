@@ -10,12 +10,15 @@ import { createGlobalStyle } from 'styled-components';
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${props => props.$isDark ? '#1a1b1e' : '#f2f2f2'};
+  background-color: transparent;
   color: ${props => props.$isDark ? '#e3e3e3' : '#000'};
-  width: 100vw;
+  width: 70vw;
   height: 100vh;
+  margin: 0 auto; 
+  box-sizing: border-box;
   @media (max-width: 768px) {
     min-height: 100vh;
+    width: 100vw;
     min-height: calc(var(--vh, 1vh) * 100);
     height: auto;
   }
@@ -26,8 +29,8 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     margin: 0;
     padding: 0;
-    background-color: ${props => props.$isDark ? '#1a1b1e' : '#ffffff'};
-    transition: background-color 0.5s ease;
+    background-color: ${props => props.$isDark ? '#1a1b1e' : '#fdffe6'};
+    transition: all 0.5s ease;
     overflow-x: hidden;
     width: 100%;
     font-family: "Gill Sans", sans-serif;
