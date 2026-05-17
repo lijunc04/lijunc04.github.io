@@ -19,7 +19,7 @@ const Container = styled.div`
     transition: ${themeTransition};
 
     @media (max-height: 500px) {
-        overflow-y: auto;
+        overflow-y: visible;
         display: block;
     }
     @media (max-width: 768px) {
@@ -32,7 +32,7 @@ const SplitLayout = styled.div`
     display: flex;
     flex: 1;
     width: 100%;
-    @media (max-width: 768px) {
+    @media (max-width: 768px) or (max-height: 650px) {
         flex-direction: column;
     }
 `;
@@ -44,7 +44,7 @@ const LeftSection = styled.div`
     align-items: center;
     gap: 4%;
     justify-content: center;
-    @media (max-width: 768px) {
+    @media (max-width: 768px) or (max-height: 650px) {
         min-height: 100dvh;
         padding: 40px 0;
         gap: 20px;
@@ -65,7 +65,7 @@ const RightSection = styled.div`
     align-items: left;
     padding: 6% 10% 6% 4%;
 
-    @media (max-width: 768px) {
+    @media (max-width: 768px) or (max-height: 650px){
         padding: 0 8% 40px 8%;
         justify-content: flex-start;
         gap: 20px;
@@ -73,13 +73,14 @@ const RightSection = styled.div`
 `;
 
 const CircularImage = styled.img`
-    width: 50%;
-    max-width: 200px;
+    
+    width: clamp(150px, 20% + 2dvw, 50%);
     height: auto;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: -2px 8px 12px -3px #000000;
     ${props => props.$shouldAnimate && css`animation: ${fadeIn} 0.6s ease-in;`}
+    transition: ${themeTransition};
 
     @media (max-width: 768px) {
         margin-bottom: 20px;
@@ -90,13 +91,12 @@ const CircularImage = styled.img`
 
 const IntroText = styled.div`
     color: ${props => props.$isDark ? '#e3e3e3' : '#000000'};
-    font-size: 20px;
-    width: 50%;
+    // font-size: 20px;
+    font-size: clamp(1rem, 1rem + 0.2dvw, 1.5rem);
     word-wrap: break-word;
     padding-top: 20px;
     text-align: center;
     line-height: 1.5;
-    white-space: nowrap;
     transition: ${themeTransition};
 
     a {
@@ -120,7 +120,7 @@ const Block = styled.div`
 `;
 
 const BigText = styled.div`
-    font-size: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+    font-size: clamp(1rem, 1rem + 0.2dvw, 1.5rem);
     color: ${props => props.$isDark ? '#ffffff' : '#000000'};
     transition: ${themeTransition};
 `;
@@ -147,6 +147,7 @@ const SkillText = styled.div`
     padding: 5px 10px;
     user-select: none;
     transition: ${themeTransition};
+    font-size: clamp(0.7rem, 0.7rem + 0.2dvw, 1.1rem);
 
     &:hover {
         background-color: ${props => props.$isDark ? '#404249' : '#A0A095'};
@@ -163,7 +164,7 @@ const ResponseContainer = styled.div`
 `;
 
 const ResponseText = styled.div`
-    font-size: clamp(0.95rem, 0.85rem + 0.4dvw, 1.1rem);
+    font-size: clamp(0.7rem, 0.7rem + 0.2dvw, 1.1rem);
     line-height: 1.5;
     font-weight: normal;
     color: ${props => props.$isDark ? '#e3e3e3' : '#000000'};

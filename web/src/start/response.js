@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 
 const StyledText = styled.span`
-    font-size: 17px;
+    font-size: clamp(0.7rem, 0.7rem + 0.2dvw, 1.1rem);
+
     font-weight: normal;
     border-right: 2px solid;
     height: 28px;
