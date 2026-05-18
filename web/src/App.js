@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     transition: all 0.5s ease;
     overflow-x: hidden;
     width: 100%;
-    font-family: "Gill Sans", sans-serif;
+    font-family: "Gill Sans",Georgia, sans-serif;
   }
 `;
 
